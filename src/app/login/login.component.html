@@ -1,0 +1,48 @@
+
+            <div class="card">
+                <div class="text-center">
+                    <h1>Customer Login</h1>
+                    <h5>Login here</h5>
+
+                </div>
+               
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="mb-3">
+                      <div class="input-field">
+                      <span class="fa fa-user p-2" style="color:rgb(11, 177, 39) ;"></span>
+                      <input formControlName="email"  type="email" class="form-control w-85" id="exampleInputEmail1" aria-describedby="emailHelp"placeholder="Username">
+                    </div>
+                      <span class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">EMAIL is required!!</span>
+                    
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-field">
+                        <span class="fa fa-lock p-2" style="color:rgb(11, 177, 39) ;"></span>
+                        <input formControlName="password" [type]="type" class="form-control w-85 " id="exampleInputPassword1" placeholder="Password">
+                        <span (click)="hideShowPass()"class="fa {{eyeIcon}}" style="color:rgb(11, 177, 39) ;"></span> 
+                      </div>
+                        <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">PASSWORD is required!!</span>
+                    
+                    </div>
+                    <!-- <div class="form-inline fr mt-4"> -->
+                      <a id="forget" (click)="opendialog()" class="font-weight-bold"  style="margin-left: 20px;margin-bottom: 1rem!important;color:rgb(11, 177, 39) ;" matDialogClose>Forget Password</a>
+                    <!-- </div> -->
+
+                    <button type="submit"  [disabled]="!loginForm.valid"class="btn   w-50 " style="border-radius: 5px; margin-top: 20px; margin-left: 50px;">Login</button>
+                  </form>
+                  <a   (click)="Opendialog()" style="text-align: center;" matDialogClose>
+                    New User?Click to Signup!!
+                </a>
+              
+            
+            </div>
+            <!-- <div class="mx-2 my-2 py-2 bordert" >
+              <div class="class text-center">
+                <a href="https://www.facebook.com" target="_blank" class="px-2"><img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png" alt=""></a>
+                <a href="https://www.google.com" target="_blank" class="px-2"><img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png "alt=""></a>
+                <a href="https://www.github.com" target="_blank" class="px-2"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-512.png" alt=""></a>
+              </div>
+            </div> -->
+
+            
+        

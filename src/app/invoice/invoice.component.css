@@ -1,0 +1,88 @@
+body {
+    margin-top: 20px;
+}
+*::selection{
+    background:rgb(28, 218, 59);
+    color:rgb(254, 254, 254);
+  }
+.qtyBtn{
+    
+    display: flex;
+    align-items: center;
+    
+}
+.qtyBtn .btn1{
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    background-color: rgb(11, 177, 39);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    color: white;
+    margin: 5px;
+}
+.qtyBtn span{
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.btn{
+    display: block;
+  }
+  .btn:hover{
+    background:#2c2c54;
+  }
+  .btn{
+    display: inline-block;
+    margin-top: 1rem;
+    background:rgb(11, 177, 39);
+    color:#fff;
+    padding:.8rem 3rem;
+    font-size: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+  }
+.card{
+    height: 60vh;
+    margin: 135px;
+    padding: 25px;
+}
+.center{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.center img{
+    
+    height: 113px;
+    width: 130px;
+    margin: 20px 0px;
+}
+.card-table{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: none;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: .25rem;
+}
+.center .btn{
+    font-size: 14px !important;
+    margin-top: 20px !important;
+    font-weight: 400;
+    padding: 12px 72px;
+    border-radius: 3px !important;
+}
+@media only screen and(max-width:600px){
+   card{
+    margin: 54px;
+    padding: 108px;
+   }
+}

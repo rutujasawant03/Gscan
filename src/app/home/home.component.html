@@ -1,0 +1,473 @@
+
+     <section class="home" id="home">
+      
+    <div class="content">
+      <h3>You pack the <span>love,</span></h3>
+      <h3>we’ll pack the<span> groceries....♥</span></h3>
+      
+    </div>
+    
+    </section>
+<!-- home section ends -->
+
+
+<!-- product section starts  -->
+
+<section class="product" id="product">
+
+    <h1 class="heading">Our <span>products</span></h1>
+    <div class="head">
+    <a  class="btn" (click)="opendialog()">Shop More</a>
+   </div>
+
+    <div class="box-container">
+        <ng-container *ngFor="let item of productList">
+        
+        <div class="box">
+
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="https://www.bigbasket.com/media/uploads/p/l/40172936_4-serapheena-keto-cake-mix-vanilla-victoria-almond-flour-no-sugar.jpg" alt="">
+            <h3>cake flour</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> Rs.50 <span> Rs.70 </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value=" ">
+                <span> /kg </span>
+            </div>
+            <a  class="btn" (click)="opendialog()"    >add to cart</a>
+        </div>
+   
+
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="https://www.bigbasket.com/media/uploads/p/s/255849_5-daawat-basmati-rice-rozana-gold.jpg" alt="">
+            <h3>Basmati Rice</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> Rs.80 <span> Rs.100 </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value=" ">
+                <span> /kg </span>
+            </div>
+            <a (click)="opendialog()" class="btn">add to cart</a>
+        </div>
+        </ng-container>
+
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="assets/Dove.jpeg" alt="">
+            <h3>Dove shampoo</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> Rs.60 <span> Rs.80 </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value=" ">
+                <span> /kg </span>
+            </div>
+            <a (click)="opendialog()"  class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="assets/Durum.jpeg" alt="">
+            <h3>Durum flour</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> Rs.60 <span> Rs.50 </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value=" ">
+                <span> /kg </span>
+            </div>
+            <a (click)="opendialog()"  class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="assets/Face.jpeg" alt="">
+            <h3>Himalaya facewash</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> Rs.120 <span> Rs.130 </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value=" ">
+                <span> /kg </span>
+            </div>
+            <a (click)="opendialog()"  class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="https://www.bigbasket.com/media/uploads/p/l/30002287_6-tata-sampann-unpolished-moong-dal.jpg" alt="">
+            <h3>Mung Dal</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> Rs.40 <span> Rs.50 </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value=" ">
+                <span> /kg </span>
+            </div>
+            <a (click)="opendialog()"  class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="https://www.bigbasket.com/media/uploads/p/l/40072494_12-bb-royal-organic-turtoor-dal.jpg" alt="" >
+            <h3>Tur Dal</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> Rs.60 <span> Rs.80 </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value=" ">
+                <span> /kg </span>
+            </div>
+            <a (click)="opendialog()"  class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="assets/Butter.jpeg" alt="">
+            <h3>natural butter</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> Rs.80 <span> Rs.100 </span> </div>
+            <div class="quantity">
+                <span>quantity : </span>
+                <input type="number" min="1" max="1000" value="1">
+                <span> /kg </span>
+            </div>
+            <a (click)="opendialog()" class="btn">add to cart</a>
+        </div>
+        
+
+    </div>
+
+</section>
+
+<!-- product section ends -->
+
+<!-- category section starts  -->
+
+<section class="category" id="category">
+
+    <h1 class="heading">shop by <span>category</span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>Rice</h3>
+            <img src="assets/Rice.jpeg" alt="">
+            <a href="#" class="btn">shop now</a>
+        </div>
+        <div class="box">
+            <h3>wheat</h3>
+            <img src="assets/Wheat.jpeg" alt="">
+            <a href="#" class="btn">shop now</a>
+        </div>
+        <div class="box">
+            <h3>Maggie</h3>
+            <img src="assets/Maggi.jpeg" alt="">
+            <a href="#" class="btn">shop now</a>
+        </div>
+        <div class="box">
+            <h3>fruits</h3>
+            <img src="assets/Fruits.jpeg" alt="">
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- category section ends -->
+
+<!-- features section starts  -->
+
+<section class="features" id="features">
+
+    <h1 class="heading"> our <span>features</span> </h1>
+    
+    <div class="box-container">
+    
+      <div class="box">
+          <img src="assets/ScanGo.jpeg" alt="">
+          <h3>Scan&Go</h3>
+          <p>Scan & Go features, reducing queues at the checkout, and making customers happier with multiple smart functionalities.</p>
+          <a href="#" class="btn">read more</a>
+      </div>
+    
+      <div class="box">
+          <img src="assets/ClickGo.jpeg" alt="">
+          <h3>Click&Go</h3>
+          <p>virtual showcase for different types of groceries products where customers can go through a catalog and select products of their interest.</p>
+          <a href="#" class="btn">read more</a>
+      </div>
+    
+      <div class="box">
+          <img src="assets/EasyPay.jpeg" alt="">
+          <h3>Easy Payments</h3>
+          <p>A good combination would be to allow direct bank transfers and payments from all major credit cards with the secure technology with secure Payments.</p>
+          <a href="#" class="btn">read more</a>
+      </div>
+    
+    </div>
+    
+    </section>
+    <section>
+    <div class="container">
+        <div class="wrapper">
+            <div class="wrapper-holder">
+                <div id="slider-img-1">
+                    <div class="context">
+                        <img src="assets/EasyPay.jpeg">
+                        <div class="details">
+                            <h2>About<span> us </span></h2>
+                            <br>
+                            <p>G-Scan allows shoppers to pick up an item they wish to buy, scan the
+                                barcode of the item with their phone and pay.
+                                they simply leave with the item they just bought No queuing; just
+                                Scan, Pay and Leave. The customers can buy the products either
+                                online by Click & Collect feature or offline by Scan & Go feature.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="slider-img-2">
+                    <div class="context">
+                        <img src="assets/ScanGo.jpeg" >
+                        <div class="details">
+                            <h2>Scan&<span>GO</span></h2>
+                            <br>
+                            <p>This feature allows customers to pick up an item from the
+                                grocery store they wish to buy, scan the product barcode with their
+                                phone and pay for it on the website, after that they can simply leave
+                                with the item they just bought. No queuing; just Scan, Pay and
+                                Leave.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="slider-img-3">
+                    <div class="context">
+                        <img src="assets/ClickGo.jpeg ">
+                        <div class="details">
+                            <h2>Click&<span>GO</span></h2>
+                            <br>
+                            <p>This feature allows customers to pick up an item from the
+                                grocery store they wish to buy, scan the product barcode with their
+                                phone and pay for it on the website, after that they can simply leave
+                                with the item they just bought. No queuing; just Scan, Pay and
+                                Leave.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="slider-img-4">
+                    <div class="context">
+                        <img src="assets/EasyPay.jpeg" >
+                        <div class="details">
+                            <h2>Easy<span>Pay</span></h2>
+                            <br>
+                            <p>We have provided two payment modes to the Customers
+                                online &offline. In online mode, the customers can pay the bill by 
+                                using the UPI appsand in offline mode, the customer can pay the 
+                                bill by using the Pay in Shop option. Where the customer can 
+                                directly pay the bill to the shopkeeper if there is any problem in the 
+                                online mode.                            
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-holder">
+            <a href="#slider-img-1" class="button"></a>
+            <a href="#slider-img-2" class="button"></a>
+            <a href="#slider-img-3" class="button"></a>
+            <a href="#slider-img-4" class="button"></a>
+        </div>
+    </div>
+    </section>
+    
+    <!-- features section ends -->
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+
+    <h1 class="heading"> <span>contact</span> us </h1>
+
+    <form action="">
+
+        <div class="inputBox">
+            <input type="text" placeholder="name">
+            <input type="email" placeholder="email">
+        </div>
+
+        <div class="inputBox">
+            <input type="number" placeholder="number">
+            <input type="text" placeholder="subject">
+        </div>
+
+        <textarea placeholder="message" name="" id="" cols="30" rows="10"></textarea>
+
+        <input type="submit" value="send message" class="btn">
+
+    </form>
+
+</section>
+
+<!-- contact section ends -->
+
+<!-- newsletter section starts  -->
+
+<section class="newsletter">
+
+    <h3>subscribe us for latest updates</h3>
+
+    <form action="">
+        <input class="box" type="email" placeholder="enter your email">
+        <input type="submit" value="subscribe" class="btn">
+    </form>
+
+</section>
+
+ <section class="footer">
+      
+    <div class="box-container">
+
+        <div class="box">
+            <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>groco</a>
+            <p>website for the grocery store, which allows shoppers to pick up an item they wish to buy, scan the barcode of the item with their phone and pay for it on the website, they simply leave with the item they just bought. No queuing; just Scan, Pay and Leave.</p>
+            <div class="share">
+                <a href="#" class="btn fab fa-facebook-f"></a>
+                <a href="#" class="btn fab fa-twitter"></a>
+                <a href="#" class="btn fab fa-instagram"></a>
+                <a href="#" class="btn fab fa-linkedin"></a>
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3>our location</h3>
+            <div class="links">
+                <a href="#">india</a>
+                <a href="#">USA</a>
+                <a href="#">france</a>
+                <a href="#">japan</a>
+                <a href="#">russia</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <div class="links">
+                <a href="#">home</a>
+                <a href="#">category</a>
+                <a href="#">product</a>
+                <a href="#">deal</a>
+                <a href="#">contact</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>download app</h3>
+            <div class="links">
+                <a href="#">google play</a>
+                <a href="#">window xp</a>
+                <a href="#">app store</a>
+            </div>
+        </div>
+
+        <h1 class="credit"> created by <span> mr. web designer </span> | all rights reserved! </h1>
+        
+    </div>
+    
+</section>
+<!-- <div class="container">
+<h4><script>document.write(localStorage.getItem('fullname'))</script></h4>
+</div> -->
+
+ 
+
+
+
+  

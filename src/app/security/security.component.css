@@ -1,0 +1,32 @@
+.input-field{
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #4343ff;
+    margin: 0px 15px 0px 15px;
+}
+.btn:hover{
+    background:#2c2c54;
+  }
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    background:rgb(11, 177, 39);
+    color:#fff;
+    padding:.8rem 3rem;
+    font-size: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+  }
+*::selection{
+    background:rgb(28, 218, 59);
+    color:rgb(254, 254, 254);
+  }
+@media screen and (max-width:600px) {
+    card{
+        padding: 70px 35px;
+    }
+}

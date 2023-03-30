@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="text-center">
+    <h1>Security Question</h1>
+
+  </div>
+  <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+    <div class="mb-3">
+
+      <div class="input-field">
+        <span class="fa fa-user p-2" style="color:rgb(11, 177, 39) ;"></span>
+        <input formControlName="email" [ngClass]="{'is-invalid':submitted && signupForm.controls.email.errors}"
+          type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+      </div>
+      <div *ngIf="submitted && signupForm.controls.email.errors" class="text-danger">
+        <span class="text-danger" *ngIf=" submitted && signupForm.controls.email.errors.required ">Field is
+          required!!</span>
+
+        <div *ngIf="submitted && signupForm.controls.email.errors.pattern">
+          Email Address is not Valid
+        </div>
+        <div *ngIf="signupForm.controls.email.hasError('duplicateEmail')">Email is duplicate</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1">First School Name</label>
+      <div class="input-field">
+
+
+        <input formControlName="security" [ngClass]="{'is-invalid':submitted && signupForm.controls.security.errors}"
+          type="text" class="form-control" id="exampleInputPassword1" placeholder="Full Name">
+      </div>
+      <div *ngIf="submitted && signupForm.controls.security.errors" class="text-danger">
+        <span class="text-danger" *ngIf=" submitted && signupForm.controls.security.errors.required ">Field is
+          required!!</span>
+
+        <div *ngIf="submitted && signupForm.controls.security.errors.minlength">
+          Answer Should be atleast 4 characters
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1">New Password</label>
+      <div class="input-field">
+        <span class="fa fa-lock p-2" style="color:rgb(11, 177, 39) ;"></span>
+        <input formControlName="password" [ngClass]="{'is-invalid':submitted && signupForm.controls.password.errors}"
+          [type]="type" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <span (click)="hideShowPass()" class="fa {{eyeIcon}}" style="color:rgb(11, 177, 39) ;" ></span>
+      </div>
+      <div *ngIf="submitted && signupForm.controls.password.errors" class="text-danger">
+        <span class="text-danger" *ngIf=" submitted && signupForm.controls.password.errors.required ">Field is
+          required!!</span>
+
+        <div *ngIf="submitted && signupForm.controls.password.errors.pattern">
+          Password must contain at least one number, one uppercase and a lowercase letter
+          and at least 8 characters<br>Password cannot contain whitespace
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn  w-50"
+      style="border-radius: 5px; margin-top: 20px; margin-left: 150px;">change password</button>
+  </form>
+</div>

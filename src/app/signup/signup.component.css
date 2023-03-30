@@ -1,0 +1,66 @@
+
+/* .card {
+    margin-top: 200px;
+    border: 1px solid gray;
+    width: 550px;
+    padding: 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+} */
+.btn:hover{
+    background:#2c2c54;
+  }
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    background:rgb(11, 177, 39);
+    color:#fff;
+    padding:.8rem 3rem;
+    font-size: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+  }
+*::selection{
+    background:rgb(28, 218, 59);
+    color:rgb(254, 254, 254);
+  }
+.input-field{
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #4343ff;
+    margin: 0px 15px 0px 15px;
+}
+input[type='text'],
+input[type='password']{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+}
+input[type='email']{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+}
+input[type='number']{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+}
+.fa-eye-slash{
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+@media screen and (max-width:600px) {
+    card{
+        padding: 70px 35px;
+    }
+}

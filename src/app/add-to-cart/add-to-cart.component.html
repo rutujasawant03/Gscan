@@ -1,0 +1,74 @@
+<ng-container *ngIf="product.length !=0">
+    <div class="container" style="padding-top: 200px;">
+        <div class="card-table">
+            <div class="cart-product">
+                
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of product;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.productName}}</td>
+                            <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
+                            <td>{{item.description}}</td>
+                            <td>₹{{item.price}}</td>
+                            <!-- <td>{{item.quantity}}kg</td> -->
+                        <div>
+                            <div class="qtyBtn">
+                                <button class="btn1" (click)="incQty(item.id,item.quantity)">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                                <span>{{item.quantity}}</span>
+                                <button class="btn1" (click)="decQty(item.id,item.quantity)">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+
+                            <td>₹{{item.quantity * item.price | number}}</td>
+                            <td>
+                                <button (click)="removeItem(item.id)" class=" btn "><i
+                                        class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><button (click)="emptyCart()" class="btn">Empty</button></td>
+                            <td><button routerLink="/product" class="btn">Shop more</button></td>
+                            <td><button class="btn" (click)="Opendialog()" >Check Out</button></td>
+                            <td><strong>Grand Total:₹{{total}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</ng-container>
+<ng-container *ngIf="product.length ==0">
+
+    <div class="container" style="padding-top: 100px;">
+        <div class="card">
+            <h5 class="card-title">My Cart</h5>
+
+        </div>
+        <div class="center">
+            <img src="assets/cart.png" alt="">
+            <h4>Cart is Empty</h4>
+            <h6>Add Item Now</h6>
+            <button routerLink="/product" class="btn ">Shop Now</button>
+        </div>
+    </div>
+
+</ng-container>

@@ -1,0 +1,68 @@
+
+   <div class="cart container">
+    <div class="row" >
+     <h1>ORDER SUMMARY</h1>
+     <div class="col-md-8">
+      <h2> Payment Mode</h2>
+      <mat-tab-group dynamicHeight>
+         
+         <mat-tab  label="UPI ">
+           
+           <div class="example-large-box mat-elevation-z4">
+            <!-- <label>Pay with RazorPay</label> -->
+            <button (click)="pay()" class="btn">Pay with RazorPay</button>
+           </div>
+         </mat-tab>
+         <mat-tab label="Pay in Shop">
+           <div class="example-large-box mat-elevation-z4">
+            <button  (click)="opendialog(item)" class="btn" matDialogClose>Pay in Shop</button>
+           </div>
+         </mat-tab>
+         
+          
+       </mat-tab-group>
+       
+       
+     </div>
+     
+     <div class="col-md-4">
+      <h2> Order Summary</h2>
+      <div class="payment-box">
+         <div class="row item">
+            
+            <div class="col-8" *ngFor="let item of product" >
+              <div class="col-4 align-self-center"><img class="img-fluid" src="{{item.image}}"></div>
+                <div class="row"><b>₹{{item.price}}</b></div>
+                <div class="row text-muted">{{item.description}}</div>
+                <div class="row">{{item.quantity}}</div>
+            </div>
+        </div>
+        <div class="payment-details"  >
+           <div >
+              <h3>MRP</h3>
+              <h3>Discount</h3>
+              <h3>Dilivery Charges</h3>
+              <hr>
+              <h3>Total Amount</h3>
+           </div>
+           <div >
+            <h3>{{total | currency:'INR'}}</h3>
+            <h3>{{(discValue) | currency:'INR'}}</h3>
+            <h3><span>FREE</span></h3>
+            <hr class="h">
+            <h3><span>{{total - discValue | currency:'INR'}}</span></h3>
+           </div>
+        </div>
+      <div class="button-row">   
+        <button mat-button class="btn"  (click)="opendialog(item)" matDialogClose>Invoice</button>  
+      </div>
+      
+      </div>
+      
+     </div>
+    
+    </div>
+   
+  </div>
+   
+  

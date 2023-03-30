@@ -1,0 +1,147 @@
+<!--  
+
+ <header class="header1">
+  <div class="icons">
+
+    
+    <div class="fas fa-shopping-cart" id="cart-btn"  routerLink="add-to-cart">{{totalItem}}</div>
+    <div class="fas fa-star" id="wishlist-btn"></div>
+    <div class="fas fa-user" id="login-btn" routerLink="login"></div>
+    
+  </div>
+</header>
+
+<header class="header">
+
+
+
+  
+ 
+  
+
+  <nav class="navbar">
+    <a href="#" class="logo"><img src="assets/logog.png"></a>
+    <a><button type="button" routerLink="product">
+        <p>ClickPay</p>
+      </button></a>
+    <a><button>
+        <p>ScanPay</p>
+      </button></a>
+    <a><button>
+        <p>About</p>
+      </button></a>
+    <a><button>
+        <p>Contact</p>
+      </button></a>
+
+  </nav>
+
+
+
+</header>  -->
+<!-- <header class="header">
+
+  <a href="#" class="logo"><img src="assets/logog.png">  </a>
+
+  <nav class="navbar">
+      <a routerLink="product">ClickPay</a>
+      <a href="#features">ScanPay</a>
+      <a href="#products">About</a>
+      <a href="#categories">Contact</a>
+      
+  </nav>
+
+  <div class="icons">
+      <div class="fas fa-bars" id="menu-btn"></div>
+      <div class="fas fa-search" id="search-btn"></div>
+      <div class="fas fa-shopping-cart" id="cart-btn" routerLink="add-to-cart">{{totalItem}}</div>
+      <div class="fas fa-user" id="login-btn" routerLink="login"></div>
+  </div>
+
+  
+
+  
+      
+  
+
+</header>
+        -->
+
+<header>
+
+  <div class="header-1">
+
+    <a href="#" class="logo"><img src="assets/logog.png"> </a>
+
+    <form class="search-box-container">
+      <!-- <input type="search" id="search-box" placeholder="search here...">
+                  <label for="search-box" class="fas fa-search"></label> -->
+      <input type="search" placeholder="search here..." id="search-box" [(ngModel)]="searchTerm"
+        (keyup)="search($event)" >
+      <label for="search-box" class="fas fa-search " ></label>
+
+    </form>
+
+  </div>
+
+  <div class="header-2">
+    
+     <div id="menu-bar"class="fas fa-bars" >
+      
+     </div> 
+    
+
+    <nav class="navbar">
+      <a href="#home">home</a>
+      <a href="scan">Scan&Go</a>
+      <!-- <a href="#products">products</a> -->
+      <a href="#Click&Go" routerLink="product">Click&Go</a>
+      <a href="#Features">Features</a>
+    </nav>
+
+    <div class="icons">
+      <a href="#" class="fas fa-shopping-cart" routerLink="add-to-cart">{{cartItem}}</a>
+      <a href="#" class="fas fa-heart"></a>
+      <a class="fas fa-user-circle" (click)="opendialog()">
+        <div class="dropdown-content" *ngIf="loggedin()">
+        <a (click)="logout()">LogOut</a>
+        
+       
+      </div></a>
+      <!-- <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" >&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div> -->
+      <!-- <span style="font-size:30px;cursor:pointer" (click)="openNav()" > -->
+       
+     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"  *ngIf="loggedin()" class="rounded-circle" 
+      alt="Avatar" >
+       <!-- <a>Welcome:{{user | titlecase}}</a> -->
+    </div>
+    
+
+
+
+  </div>
+
+</header>
+<router-outlet></router-outlet>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+
+<!-- newsletter section ends -->
+
+<!-- footer section starts  -->
+<!-- <footer  class="page-footer font-small mdb-color pt-4"> -->
+
+<!-- </footer> -->
+
+<!-- footer section ends -->
+
+

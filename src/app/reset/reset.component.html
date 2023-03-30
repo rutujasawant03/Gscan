@@ -1,0 +1,31 @@
+<!-- <div class="card">
+    <div class="text-center">
+        <h1>Reset Password</h1>
+       
+
+    </div>
+    <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+        <div class="mb-3">
+            <label for="exampleInputEmail1">Reset Password</label>
+            <div class="input-field">
+                <span class="fa fa-lock p-2"></span>
+                <input formControlName="password"
+                    [ngClass]="{'is-invalid':submitted && signupForm.controls.password.errors}" [type]="type"
+                    class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+            </div>
+            <div *ngIf="submitted && signupForm.controls.password.errors" class="text-danger">
+                <span class="text-danger" *ngIf=" submitted && signupForm.controls.password.errors.required ">Field is
+                    required!!</span>
+
+                <div *ngIf="submitted && signupForm.controls.password.errors.pattern">
+                    Password must contain at least one number, one uppercase and a lowercase letter
+                    and at least 8 characters<br>Password cannot contain whitespace
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block w-50"
+        style="border-radius: 5px; margin-top: 20px; margin-left: 150px;"  >Sign Up</button>
+    </form>
+</div> -->
