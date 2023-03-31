@@ -111,7 +111,7 @@ export class ProductComponent implements OnInit {
         if(result){
           alert('product added')
           console.log(result.id,'hvgxjhhj')
-          
+          localStorage.setItem('localCart',JSON.stringify(result));
         
            
         }
