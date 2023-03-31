@@ -43,12 +43,14 @@ export class AddToCartComponent implements OnInit {
     this.CartDetails();
     this.loadCart();
     this.getID();
+    this.removeItem(this.id)
   }
   Opendialog(){
     this.dialog.open(CheckoutComponent, {
       width:'50%',
     
     });
+    
   }
   itemsCart:any = [];
   getID(){
@@ -134,22 +136,34 @@ export class AddToCartComponent implements OnInit {
     
  
 
-  removeItem(item:any){
-    console.log(item);
-    if(localStorage.getItem('localCart')){
-      this.product = JSON.parse(localStorage.getItem('localCart') || '[]');
-      for(let i=0; i<this.product.length; i++){
-        if(this.product[i].id === item){
-          this.product.splice(i, 1);
-          localStorage.setItem('localCart', JSON.stringify(this.product));
-          this.loadCart();
-          this.cartNumberFunc()
-        }
+  removeItem(id:number){
+    // console.log(item);
+    // if(localStorage.getItem('localCart')){
+    //   this.product = JSON.parse(localStorage.getItem('localCart') || '[]');
+    //   for(let i=0; i<this.product.length; i++){
+    //     if(this.product[i].id === item){
+    //       this.product.splice(i, 1);
+    //       localStorage.setItem('localCart', JSON.stringify(this.product));
+         
+    //     }
        
-      }
-     
-    }
+    //   }
+    //   this.loadCart();
+    //       this.cartNumberFunc()
+    // }
+   
     
+    this.api.deleteCart(id).subscribe((res)=>{
+      console.log(res,'pppppppppp')
+     
+    })
+  }
+  cartList(userId:number){
+    this.api.getCartList(userId).subscribe((res)=>{
+      if(res){
+        localStorage.setItem('localCart',JSON.stringify(res))
+      }
+    })
   }
   emptyCart(){
     localStorage.removeItem('localCart');

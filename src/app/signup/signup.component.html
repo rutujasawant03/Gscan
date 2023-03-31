@@ -63,10 +63,10 @@
         <span (click)="hideShowPass()" class="fa {{eyeIcon}}" style="color:rgb(11, 177, 39) ;"></span>
       </div>
       <div *ngIf="submitted && signupForm.controls.password.errors" class="text-danger">
-        <span class="text-danger" *ngIf=" submitted && signupForm.controls.password.errors.required ">Field is
+        <span class="text-danger" *ngIf="r['password'].getError('required')!=null ">Field is
           required!!</span>
 
-        <div *ngIf="submitted && signupForm.controls.password.errors.minlength">
+        <div *ngIf="r['password'].getError('minlength')!=null">
           Must be at least 8 or more characters
         </div>
       </div>
@@ -74,23 +74,21 @@
     <div class="mb-3">
     <div class="input-field">
       <span class=" fa fa-lock p-2" style="color:rgb(11, 177, 39) ;"></span>
-      <label for="confirmPassword">New password (confirmation):</label>
-      <input id="confirmPassword" type="password" class="form-control"
-      [ngClass]='confirmPasswordClass' formControlName="confirmPassword"
-      #cpw (keyup)='checkPasswords(pw.value, cpw.value)'>
-      <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
-      class="form-text text-danger">
-    <div *ngIf="confirmPassword.errors?.['required']">
-      Field is required        
+      <input formControlName="confirmpassword"
+        [ngClass]="{'is-invalid':submitted && signupForm.controls.confirmpassword.errors}" [type]="type"
+        class="form-control" id="exampleInputPassword1" placeholder="ConfirmPassword">
+      <span (click)="hideShowPass()" class="fa {{eyeIcon}}" style="color:rgb(11, 177, 39) ;"></span>
     </div>
-    <div *ngIf="confirmPassword.errors?.['pattern']">
-      Password must contain at least one number, one uppercase and a lowercase letter 
-      and at least 8 characters<br>Password cannot contain whitespace
-    </div>
-    <div *ngIf='!passwordsMatching && isConfirmPasswordDirty'>
-      Passwords did not match
-  </div>
-  </div>
+    <div *ngIf="submitted && signupForm.controls.confirmpassword.errors" class="text-danger">
+      <span class="text-danger" *ngIf=" r['confirmpassword'].getError('required')!=null">Field is
+        required!!</span>
+
+      <div *ngIf="r['confirmpassword'].getError('minlength')!=null">
+         Must be at least 8 or more characters
+      </div>
+      <div *ngIf="r['confirmpassword'].getError('MustMatch')!=null">
+        Password should match
+     </div>
     </div>
     </div>
 
@@ -113,7 +111,7 @@
   </div>
 
 
-<button type="submit" class="btn  w-50"
+<button type="submit" class="btn  w-50" 
   style="border-radius: 5px; margin-top: 20px; margin-left: 150px;">Sign Up</button>
 </form>
 <a (click)="Opendialog()" style="text-align: center;" matDialogClose>
@@ -121,3 +119,4 @@
 </a>
 
 </div>
+<!-- [disabled]="signupForm.invalid" -->

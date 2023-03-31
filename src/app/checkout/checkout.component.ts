@@ -58,10 +58,17 @@ export class CheckoutComponent implements OnInit {
           alert('product added')
 
         }
+        this.product = JSON.parse(localStorage.getItem('localCart') || '{}');
+
       })
       
   }
- 
+//  delete(){
+//   this.product = JSON.parse(localStorage.getItem('localCart') || '{}');
+//   for (let i =0; i< this.product.length;i++){
+//     // this.api.deleteCart
+//   }
+//  }
   
  
   loadCart(){

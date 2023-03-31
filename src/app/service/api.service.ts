@@ -42,8 +42,11 @@ export class ApiService {
   // getOrder(id:number){
   //   return this.http.get<any>("http://localhost:3000/order/"+id);
   // }
-  getCartList(userId:any){
-    return this.http.get<any>("http://localhost:3000/cart?userID="+userId);
+  getCartList(userId:number){
+    return this.http.get<any>("http://localhost:3000/cart?userID="+userId)
+    .pipe(map((res:any)=>{
+      return res;
+    }));
   }
   getCartLists(data:Cart){
     return this.http.get<any>("http://localhost:3000/cart/"+data);
@@ -51,5 +54,10 @@ export class ApiService {
   removeToCart(cartId: number) {
     return this.http.delete<any>('http://localhost:3000/cart?id='+cartId);
   }
- 
+ deleteCart(id:number){
+   return this.http.delete<any>("http://localhost:3000/cart/"+id)
+   .pipe(map((res:any)=>{
+    return res;
+  }))
+ }
 }

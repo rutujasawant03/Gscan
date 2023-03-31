@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {FormGroup,FormBuilder, Validators, ValidatorFn, AbstractControl, FormControl} from "@angular/forms"
+import {FormGroup,FormBuilder, Validators, ValidatorFn, AbstractControl} from "@angular/forms"
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
+
 
 @Component({
   selector: 'app-signup',
@@ -19,41 +20,32 @@ export class SignupComponent implements OnInit {
   type: string ="password";
   isText: boolean =false;
   eyeIcon: string ="fa-eye-slash";
-  passwordsMatching = false;
-  isConfirmPasswordDirty = false;
-  confirmPasswordClass = 'form-control';
-  newPassword = new FormControl(null, [
-    (c: AbstractControl) => Validators.required(c),
-    Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})'),
-  ]);
-  confirmPassword = new FormControl(null, [
-    (c: AbstractControl) => Validators.required(c),
-    Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})'),
-  ]);
-  resetPasswordForm = this.formBuilder.group({
-    newPassword: this.newPassword,
-    confirmPassword: this.confirmPassword,
-  });
+ 
+ 
 
 
   
   
 
 
-  constructor(private formBuilder : FormBuilder,private http :HttpClient,private router :Router,private dialog : MatDialog,private dialogRef :MatDialogRef<SignupComponent>) { }
+  constructor(private formBuilder : FormBuilder,private http :HttpClient,private router :Router,private dialog : MatDialog,private dialogRef :MatDialogRef<SignupComponent>) {}
 
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       fullname:['',[Validators.required,Validators.minLength(6)]],
       email:['',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      // password:['',[Validators.required,Validators.minLength(8)]],
-      // confirmpassword:['',[Validators.required,Validators.minLength(8)]],
+      password:['',[Validators.required,Validators.minLength(8)]],
+      confirmpassword:['',[Validators.required,Validators.minLength(8)]],
       mobile:['',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$"),Validators.maxLength(10)]],
       security:['',[Validators.required,Validators.minLength(10)]],
       
-    }) 
-   
+    }
+    ,{
+      validators:this.MustMatch('password','confirmpassword')
+    }
+    ) 
+   this.duplicate()
   }
   Opendialog() {
     this.dialog.open(LoginComponent, {
@@ -62,35 +54,25 @@ export class SignupComponent implements OnInit {
     });
     
   }
-  
-  checkPasswords(pw: string, cpw: string) {
-    this.isConfirmPasswordDirty = true;
-    if (pw == cpw) {
-      this.passwordsMatching = true;
-      this.confirmPasswordClass = 'form-control is-valid';
-    } else {
-      this.passwordsMatching = false;
-      this.confirmPasswordClass = 'form-control is-invalid';
-    }
-  }
-  // confirmedValidator(password: string, confirmpassword: string) {
-  //   return (signupForm: FormGroup) => {
-  //     const control = signupForm.controls[password];
-  //     const matchingControl = signupForm.controls[confirmpassword];
-  //     if (matchingControl.errors && !matchingControl.errors.confirmedValidator) 
-  //     {
-  //       return;
-  //     }
-  //     if (control.value !== matchingControl.value) {
-  //       matchingControl.setErrors({ confirmedValidator: true });
-  //     } 
-  //     else 
-  //     {
-  //       matchingControl.setErrors(null);
-  //     }
-  //   };
-  // }
  
+  get r(){
+    return this.signupForm.controls
+  }
+ MustMatch(password:any,confirmpassword:any){
+    return (formgroup:FormGroup)=>{
+      const passwordcontrol=formgroup.controls[password];
+      const confirmpasswordcontrol=formgroup.controls[confirmpassword];
+      if(confirmpasswordcontrol.errors && confirmpasswordcontrol.errors['MustMatch'] ){
+        return;
+      }
+      if(passwordcontrol.value!==confirmpasswordcontrol.value){
+        confirmpasswordcontrol.setErrors({MustMatch:true})
+      }
+      else{
+        confirmpasswordcontrol.setErrors(null)
+      }
+    }
+ }
   signUp(){
    
     this.submitted = true
@@ -117,8 +99,17 @@ export class SignupComponent implements OnInit {
     }
     
   }
-    
-   
+  duplicate(){
+  this.http.get<any>("http://localhost:3000/signupUsers")
+  .subscribe(res=>{
+    const user =res.find((a:any)=>{
+     let userInfo = a.email
+    }); 
+  })
+}
+// userExist(userInfo:UserInfo):boolean{
+//   let userData =this.signupForm
+// }
   
   hideShowPass(){
     this.isText = !this.isText;
