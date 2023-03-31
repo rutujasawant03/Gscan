@@ -136,35 +136,46 @@ export class AddToCartComponent implements OnInit {
     
  
 
-  removeItem(id:number){
-    // console.log(item);
-    // if(localStorage.getItem('localCart')){
-    //   this.product = JSON.parse(localStorage.getItem('localCart') || '[]');
-    //   for(let i=0; i<this.product.length; i++){
-    //     if(this.product[i].id === item){
-    //       this.product.splice(i, 1);
-    //       localStorage.setItem('localCart', JSON.stringify(this.product));
+  removeItem(item:any){
+    console.log(item,'tdhchgchgcghc');
+    if(localStorage.getItem('localCart')){
+      this.product = JSON.parse(localStorage.getItem('localCart') || '[]');
+      // for(let i=0; i<this.product.length; i++){
+      //   if(this.product[i].id === item){
+      //     this.product.splice(i, 1);
+      //     localStorage.setItem('localCart', JSON.stringify(this.product));
          
-    //     }
+      //   }
        
-    //   }
-    //   this.loadCart();
-    //       this.cartNumberFunc()
-    // }
+      // }
+      this.api.deleteCart(item).subscribe((res)=>{
+        for(let i=0; i<this.product.length; i++){
+            if(this.product[i].id === item){
+              this.product.splice(i, 1);
+              localStorage.setItem('localCart', JSON.stringify(this.product));
+             
+            }
+           
+          }
+          location.reload();
+      })
+      this.loadCart();
+          this.cartNumberFunc()
+         
+    }
    
-    
-    this.api.deleteCart(id).subscribe((res)=>{
-      console.log(res,'pppppppppp')
+    // this.api.removeToCart(id).subscribe((res)=>{
+    //   console.log(res,'pppppppppp')
      
-    })
+    // })
   }
-  cartList(userId:number){
-    this.api.getCartList(userId).subscribe((res)=>{
-      if(res){
-        localStorage.setItem('localCart',JSON.stringify(res))
-      }
-    })
-  }
+  // cartList(userId:number){
+  //   this.api.getCartList(userId).subscribe((res)=>{
+  //     if(res){
+  //       localStorage.setItem('localCart',JSON.stringify(res))
+  //     }
+  //   })
+  // }
   emptyCart(){
     localStorage.removeItem('localCart');
     location.reload();

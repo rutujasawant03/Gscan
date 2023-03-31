@@ -100,7 +100,7 @@ export class ProductComponent implements OnInit {
         quantity : item.quantity,
         total: item.total,
         discount:10,
-       
+        
       }
       
       let cart = this.cartProduct
@@ -110,6 +110,10 @@ export class ProductComponent implements OnInit {
       this.cartService.postCart(cart).subscribe((result: any)=>{
         if(result){
           alert('product added')
+          console.log(result.id,'hvgxjhhj')
+          
+        
+           
         }
       })
       var Pid = item.id;

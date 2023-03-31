@@ -82,14 +82,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   totalDisc(){
-    // if(localStorage.getItem('cart')){
-    //   this.product= JSON.parse(localStorage.getItem('locarCart') || '[]')
+    
       this.discValue = this.product.reduce(function(acc: any, val: any){
         return acc + (val.quantity*val.mrp*val.discount/100);
       },0)
-    // }
+   
   }
-// tpay = (this.total - this.discValue)*100   
+  
      
   options = {
     "key": "rzp_test_aErLjoKUqCb7rU",
