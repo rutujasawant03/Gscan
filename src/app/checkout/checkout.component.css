@@ -1,8 +1,8 @@
 .cart{
     /* width: 900px; */
     height: 500px;
-    overflow-x: hidden;
-    overflow-y: hidden !important;
+    /* overflow-x: hidden;
+    overflow-y: hidden !important; */
 }
 *::selection{
     background:rgb(28, 218, 59);

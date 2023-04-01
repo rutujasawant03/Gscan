@@ -6,6 +6,9 @@ import { CartService } from './service/cart.service';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './service/auth.service';
+import { ApiService } from './service/api.service';
+
+
 
 
 @Component({
@@ -21,11 +24,11 @@ export class AppComponent {
   public totalItem: number = 0;
   public grandTotal: number = 0;
   showFiller = false;
- 
+ loginU:any;
 
   public searchTerm !: string;
 
-  constructor(private dialog: MatDialog, private cartService: CartService,private auth:AuthService) {
+  constructor(private dialog: MatDialog, private cartService: CartService,private auth:AuthService,private api:ApiService) {
     this.auth.cartSubject.subscribe((data)=>{
     this.cartItem = data;
     });
@@ -43,15 +46,20 @@ export class AppComponent {
   }
   cartItem:number = 0;
   cartItemFunc(){
-    if(localStorage.getItem('localCart') != null){
-      var cartCount = JSON.parse(localStorage.getItem('localCart') || '[]');
-      this.cartItem = cartCount.length;
-    }
+    let user = localStorage.getItem('user');
+     
+      let userId = user && JSON.parse(user).id
+      this.loginU = user && JSON.parse(user).fullname
+   {
+    this.api.getCartList(userId).subscribe((cartCount)=>{ 
+      this.cartItem = cartCount.length
+      console.log(this.cartItem,"sds")
+    })
+  } 
 
   }
     loggedin(){
       return localStorage.getItem('user');
-
     }
  
   

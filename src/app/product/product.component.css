@@ -46,32 +46,7 @@
     padding:.7rem 1rem;
     font-size: 2rem;
   }
-  .icons{
-    position: absolute;
-    top:.5rem; right:-6rem;
-  }
   
-  .box:hover .icons{
-    right:1rem;
-  }
-  
-  .box .icons a{
-    display: block;
-    height:4.5rem;
-    width:4.5rem;
-    line-height: 4.5rem;
-    font-size: 1.7rem;
-    color:var(--black);
-    background:rgba(0,0,0,.05);
-    border-radius: 50%;
-    margin-top: .7rem;
-    text-decoration: none;
-  }
-  
-  .card .box .icons a:hover{
-    background:rgb(11, 177, 39);
-    color:#fff;
-  }
   .card.box h3{
     color:var(--black);
     font-size: 2.5rem;

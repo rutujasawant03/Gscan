@@ -26,7 +26,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ScanComponent } from './scan/scan.component';
@@ -67,7 +67,7 @@ import { ScanComponent } from './scan/scan.component';
     MatTabsModule,
     NgxScannerQrcodeModule,
     RouterModule,
-    
+    MatMenuModule
     
   
   ],

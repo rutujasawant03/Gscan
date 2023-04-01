@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import{FormBuilder,FormGroup,Validators} from "@angular/forms"
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -11,7 +11,8 @@ import { SignupComponent } from '../signup/signup.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  changeDetection:ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
   public loginForm!: FormGroup
@@ -52,16 +53,19 @@ export class LoginComponent implements OnInit {
       });
       if(user){
         alert("Login Sucessfully!!");
-        
+        location.reload()
+       
       
       if(res){
           localStorage.setItem('user',JSON.stringify(user))
         }
       
-        this.localToDb(this.item,this.index)
+       
         this.loginForm.reset();
         this.dialogRef.close();
+        this.localToDb(this.item,this.index)
         this.router.navigate(['product'])
+        
         localStorage.getItem('localCart')
         
       }
@@ -73,6 +77,7 @@ export class LoginComponent implements OnInit {
       alert("Something went wrong!!")
     
     })
+
   }
  
   localToDb(item:any,index:any) {

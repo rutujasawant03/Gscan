@@ -662,7 +662,9 @@ section{
 }
 
 .icons a.fa-user-circle:hover .dropdown-content {display: block;}
-
+.user{
+  padding: 10px;
+}
 
 
 
@@ -796,5 +798,6 @@ section{
   }
 
 }
+
 
 

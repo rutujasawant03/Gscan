@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
+import {jsPDF} from "jspdf";
 @Component({
   selector: 'app-invoice',
   templateUrl: './invoice.component.html',
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent implements OnInit {
+  @ViewChild('content',{static:false}) el !:ElementRef;
   public product :any =[];
   constructor() { }
 
@@ -43,6 +44,15 @@ export class InvoiceComponent implements OnInit {
       },0)
     }
   }
- 
-  
+ //invoice
+ PDF(){
+   let pdf = new jsPDF('p','pt','a4');
+   pdf.html(this.el.nativeElement,{
+     callback:(pdf)=>{
+       pdf.save("invoice.pdf");
+     }
+   });
+  //  pdf.save();
+ }
+
 }

@@ -21,13 +21,13 @@ export class AddToCartComponent implements OnInit {
    productList : any | Cart;
   data: any;
   item: any;
+  ty:any;
   id :any;
   constructor(private cartService : CartService,private http :HttpClient,private formBuilder:FormBuilder,
     private api : ApiService,private auth : AuthService,private dialog: MatDialog, private actRoute: ActivatedRoute){}
 
   ngOnInit(): void {
     
-   
     this.actRoute.queryParams.subscribe(queryParam =>{
       console.log(queryParam,'hiii')
       this.id = queryParam.id;
@@ -40,17 +40,29 @@ export class AddToCartComponent implements OnInit {
       
       
     })
+    let user = localStorage.getItem('user');
+     
+      let userId = user && JSON.parse(user).id
+      
+    this.api.getCartList(userId).subscribe((res)=>{
+      
+      this.ty = res
+      if(res){
+        localStorage.setItem('localCart',JSON.stringify(res))
+      }
+     
+    })
+    
     this.CartDetails();
     this.loadCart();
     this.getID();
-    this.removeItem(this.id)
+    
   }
   Opendialog(){
     this.dialog.open(CheckoutComponent, {
       width:'50%',
     
     });
-    
   }
   itemsCart:any = [];
   getID(){
@@ -59,6 +71,11 @@ export class AddToCartComponent implements OnInit {
       let data = res;
       console.log(data,'hh');
       console.log(res,'ii')
+    
+    this.cartService.postCart(data).subscribe((result: any)=>{
+        if(result){location.reload()
+        }
+      })
       
       let cartDataNull = localStorage.getItem('localCart');
     if(cartDataNull == null){
@@ -99,36 +116,36 @@ export class AddToCartComponent implements OnInit {
   }
   CartDetails(){
     if(localStorage.getItem('localCart')){
-      this.product = JSON.parse(localStorage.getItem('localCart') || '[]');
-      console.log(this.product);
+      this.ty = JSON.parse(localStorage.getItem('localCart') || '[]');
+      console.log(this.ty);
     }
   }
 
 
   incQty(id: any,quantity: any){
     
-    for(let i=0; i<this.product.length; i++){
-     if(this.product[i].id === id){
+    for(let i=0; i<this.ty.length; i++){
+     if(this.ty[i].id === id){
     
        if(quantity !=10){
-       this.product[i].quantity = parseInt(quantity) + 1;
+       this.ty[i].quantity = parseInt(quantity) + 1;
        }
       
       }
     }
-    localStorage.setItem('localCart', JSON.stringify(this.product));
+    localStorage.setItem('localCart', JSON.stringify(this.ty));
     this.loadCart();
    
  }
 
  decQty(id: any,quantity: any){
-   for(let i=0; i<this.product.length; i++){
-    if(this.product[i].id === id){
+   for(let i=0; i<this.ty.length; i++){
+    if(this.ty[i].id === id){
      if(quantity !=1)
-      this.product[i].quantity = parseInt(quantity) - 1;
+      this.ty[i].quantity = parseInt(quantity) - 1;
     }
    }
-   localStorage.setItem('localCart', JSON.stringify(this.product));
+   localStorage.setItem('localCart', JSON.stringify(this.ty));
    this.loadCart();
    
 } 
@@ -137,45 +154,25 @@ export class AddToCartComponent implements OnInit {
  
 
   removeItem(item:any){
-    console.log(item,'tdhchgchgcghc');
+    console.log(item,'dss');
     if(localStorage.getItem('localCart')){
-      this.product = JSON.parse(localStorage.getItem('localCart') || '[]');
-      // for(let i=0; i<this.product.length; i++){
-      //   if(this.product[i].id === item){
-      //     this.product.splice(i, 1);
-      //     localStorage.setItem('localCart', JSON.stringify(this.product));
-         
-      //   }
-       
-      // }
+      this.ty = JSON.parse(localStorage.getItem('localCart') || '[]');
       this.api.deleteCart(item).subscribe((res)=>{
-        for(let i=0; i<this.product.length; i++){
-            if(this.product[i].id === item){
-              this.product.splice(i, 1);
-              localStorage.setItem('localCart', JSON.stringify(this.product));
+        for(let i=0; i<this.ty.length; i++){
+            if(this.ty[i].id === item){
+              this.ty.splice(i, 1);
+              localStorage.setItem('localCart', JSON.stringify(this.ty));
              
             }
            
           }
-          location.reload();
+          
       })
       this.loadCart();
           this.cartNumberFunc()
-         
     }
-   
-    // this.api.removeToCart(id).subscribe((res)=>{
-    //   console.log(res,'pppppppppp')
-     
-    // })
+    
   }
-  // cartList(userId:number){
-  //   this.api.getCartList(userId).subscribe((res)=>{
-  //     if(res){
-  //       localStorage.setItem('localCart',JSON.stringify(res))
-  //     }
-  //   })
-  // }
   emptyCart(){
     localStorage.removeItem('localCart');
     location.reload();
@@ -183,19 +180,31 @@ export class AddToCartComponent implements OnInit {
     
   }
   // cart icon update
+  // cartNumber:number = 0;
+  // cartNumberFunc(){
+  //   var cartValue = JSON.parse(localStorage.getItem('localCart')|| '[]');
+  //   this.cartNumber = cartValue.length;
+    
+  //   this.auth.cartSubject.next(this.cartNumber)
+  
+  // }
   cartNumber:number = 0;
   cartNumberFunc(){
-    var cartValue = JSON.parse(localStorage.getItem('localCart')|| '[]');
+     let user = localStorage.getItem('user');
+    let userId = user && JSON.parse(user).id
+      
+    this.api.getCartList(userId).subscribe((cartValue)=>{
     this.cartNumber = cartValue.length;
-    
+    console.log(this.cartNumber,'rutu');
     this.auth.cartSubject.next(this.cartNumber)
+    })
   }
   // grandTotal
   total:number = 0
   loadCart(){
     if(localStorage.getItem('localCart')){
-      this.product = JSON.parse(localStorage.getItem('localCart') || '[]')
-      this.total = this.product.reduce(function(acc: any,val: any){
+      this.ty = JSON.parse(localStorage.getItem('localCart') || '[]')
+      this.total = this.ty.reduce(function(acc: any,val: any){
         return acc + (val.price * val.quantity);
       }, 0)
     }

@@ -18,7 +18,10 @@ export class HomeComponent implements OnInit {
   public searchTerm !: string  ;
    public productList : any;
   searchKey:string ="";
-
+  cart1:any
+  item: any;
+  cartID:any;
+  cartProduct:any;
   constructor(private dialog : MatDialog,private cartService : CartService,private api : ApiService){
     
     }
@@ -36,7 +39,10 @@ export class HomeComponent implements OnInit {
       this.grandTotal =res;
       
     })
-   
+    this.api.getProduct()
+    .subscribe(res=>{
+      this.productList = res;
+    })
 
     
     
@@ -45,16 +51,73 @@ search(event:any){
   this.searchTerm = (event.target as HTMLInputElement).value;
   console.log(this.searchTerm);
 }
-addtoCart(item:any){
-  this.cartService.addtoCart(item);
-  // console.log(item, "ye dkho hum haya hai")
+// addtoCart(item:any){
+//   this.cartService.addtoCart(item);
+//   // console.log(item, "ye dkho hum haya hai")
+// }
+itemsCart:any;
+opendialog(item:any) {
+  
+  if(!localStorage.getItem('user')){
+
+    alert('U need to login');
+    this.dialog.open(LoginComponent, {
+      width: '50%'
+   
+    })
+  }
+else{
+let user = localStorage.getItem('user');
+
+  let userId = user && JSON.parse(user).id
+  
+  this.cartProduct = {
+    userID :userId,
+    productid : item.id,
+    category: item.category,
+    description :item.description,
+    image : item.image,
+    price : item.price,
+    productName : item.productName,
+    quantity : item.quantity,
+    total: item.total,
+    discount:10,
+  }
+
+  this.cart1 = this.cartProduct
+
+var Pid = item.id;
+console.log(Pid,'pid var')
+console.log(Pid,'pid var')
+let index:number = -1;
+this.itemsCart = JSON.parse(localStorage.getItem('localCart') || '[]');
+console.log(this.itemsCart,'cartdeta')
+
+for(let i=0; i<this.itemsCart.length; i++){
+if(Pid === this.itemsCart[i].productid){
+  this.itemsCart[i].quantity = item.quantity;
+  index = i;
+  break;
 }
-opendialog() {
-  alert('U need to login');
-  this.dialog.open(LoginComponent, {
-    width: '50%'
+}
+
+if(index == -1){
+this.itemsCart.push(this.cart1);
+console.log(this.cart1,'ds')
+localStorage.setItem('localCart',JSON.stringify(this.itemsCart));
+}
+else{
+
+localStorage.setItem('localCart',JSON.stringify(this.itemsCart));
+}
+if(index == -1){
+this.cartService.postCart(this.cart1).subscribe((result: any)=>{
+  if(result){
+  }
  
-  })
+})
+}
+} 
   
  
 }

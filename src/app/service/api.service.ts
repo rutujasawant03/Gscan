@@ -60,4 +60,7 @@ export class ApiService {
     return res;
   }))
  }
+ putProduct(data:any,id: number){
+  return this.http.put<any>("http://localhost:3000/productList/"+id , data);
+}
 }

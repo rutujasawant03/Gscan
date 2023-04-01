@@ -82,8 +82,16 @@ export class SignupComponent implements OnInit {
     
     }
     else{
-   
-     this.http.post<any>("http://localhost:3000/signupUsers",this.signupForm.value)
+     
+        this.http.get<any>("http://localhost:3000/signupUsers")
+        .subscribe(res=>{
+          const email =res.find((a:any)=>{
+            return a.email ===this.signupForm.value.email
+          });
+          if(email){
+            alert("duplicate email");
+          }else{
+            this.http.post<any>("http://localhost:3000/signupUsers",this.signupForm.value)
     .subscribe(res=>{
       alert("Signup Sucessfull");
      
@@ -96,6 +104,10 @@ export class SignupComponent implements OnInit {
      
     });
     });
+          }
+
+        })
+     
     }
     
   }

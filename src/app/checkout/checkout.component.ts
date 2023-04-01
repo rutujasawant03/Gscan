@@ -16,6 +16,7 @@ import { PaymentauthService } from '../service/paymentauth.service';
 export class CheckoutComponent implements OnInit {
  discValue:number = 10;
   total:number= 0;
+  cartdelete:any;
   product :any ;
   order :any =[];
   cartProduct:any;
@@ -61,14 +62,17 @@ export class CheckoutComponent implements OnInit {
         this.product = JSON.parse(localStorage.getItem('localCart') || '{}');
 
       })
-      
+      this.delete()
   }
-//  delete(){
-//   this.product = JSON.parse(localStorage.getItem('localCart') || '{}');
-//   for (let i =0; i< this.product.length;i++){
-//     // this.api.deleteCart
-//   }
-//  }
+
+  delete(){
+    this.cartdelete = JSON.parse(localStorage.getItem('localCart') || '{}');
+    for (let i =0; i< this.cartdelete.length;i++){
+      this.api.deleteCart(this.cartdelete[i].id).subscribe((res)=>{
+  
+      })
+    }
+   }
   
  
   loadCart(){

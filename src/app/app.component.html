@@ -100,14 +100,10 @@
     </nav>
 
     <div class="icons">
-      <a href="#" class="fas fa-shopping-cart" routerLink="add-to-cart">{{cartItem}}</a>
-      <a href="#" class="fas fa-heart"></a>
-      <a class="fas fa-user-circle" (click)="opendialog()">
-        <div class="dropdown-content" *ngIf="loggedin()">
-        <a (click)="logout()">LogOut</a>
-        
-       
-      </div></a>
+      <a  class="fas fa-shopping-cart" routerLink="add-to-cart">{{cartItem}}</a>
+      <!-- <a href="#" class="fas fa-heart"></a> -->
+      <a class="fas fa-user-circle" (click)="opendialog()" >
+        </a>
       <!-- <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" >&times;</a>
         <a href="#">About</a>
@@ -117,8 +113,14 @@
       </div> -->
       <!-- <span style="font-size:30px;cursor:pointer" (click)="openNav()" > -->
        
-     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"  *ngIf="loggedin()" class="rounded-circle" 
-      alt="Avatar" >
+     <!-- <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"  *ngIf="loggedin()" class="rounded-circle" 
+      alt="Avatar" > -->
+      <!-- <a class="user"><span>{{loginU}}</span></a> -->
+      <a>
+      <button mat-button [matMenuTriggerFor]="menu">{{loginU}}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">logout</button>
+      </mat-menu></a>
        <!-- <a>Welcome:{{user | titlecase}}</a> -->
     </div>
     

@@ -1,13 +1,12 @@
+<section class="home" id="home">
 
-     <section class="home" id="home">
-      
     <div class="content">
-      <h3>You pack the <span>love,</span></h3>
-      <h3>we’ll pack the<span> groceries....♥</span></h3>
-      
+        <h3>You pack the <span>love,</span></h3>
+        <h3>we’ll pack the<span> groceries....♥</span></h3>
+
     </div>
-    
-    </section>
+
+</section>
 <!-- home section ends -->
 
 
@@ -17,209 +16,38 @@
 
     <h1 class="heading">Our <span>products</span></h1>
     <div class="head">
-    <a  class="btn" (click)="opendialog()">Shop More</a>
-   </div>
-
-    <div class="box-container">
-        <ng-container *ngFor="let item of productList">
-        
-        <div class="box">
-
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="https://www.bigbasket.com/media/uploads/p/l/40172936_4-serapheena-keto-cake-mix-vanilla-victoria-almond-flour-no-sugar.jpg" alt="">
-            <h3>cake flour</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> Rs.50 <span> Rs.70 </span> </div>
-            <div class="quantity">
-                <span>quantity : </span>
-                <input type="number" min="1" max="1000" value=" ">
-                <span> /kg </span>
-            </div>
-            <a  class="btn" (click)="opendialog()"    >add to cart</a>
-        </div>
-   
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="https://www.bigbasket.com/media/uploads/p/s/255849_5-daawat-basmati-rice-rozana-gold.jpg" alt="">
-            <h3>Basmati Rice</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> Rs.80 <span> Rs.100 </span> </div>
-            <div class="quantity">
-                <span>quantity : </span>
-                <input type="number" min="1" max="1000" value=" ">
-                <span> /kg </span>
-            </div>
-            <a (click)="opendialog()" class="btn">add to cart</a>
-        </div>
-        </ng-container>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="assets/Dove.jpeg" alt="">
-            <h3>Dove shampoo</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> Rs.60 <span> Rs.80 </span> </div>
-            <div class="quantity">
-                <span>quantity : </span>
-                <input type="number" min="1" max="1000" value=" ">
-                <span> /kg </span>
-            </div>
-            <a (click)="opendialog()"  class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="assets/Durum.jpeg" alt="">
-            <h3>Durum flour</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> Rs.60 <span> Rs.50 </span> </div>
-            <div class="quantity">
-                <span>quantity : </span>
-                <input type="number" min="1" max="1000" value=" ">
-                <span> /kg </span>
-            </div>
-            <a (click)="opendialog()"  class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="assets/Face.jpeg" alt="">
-            <h3>Himalaya facewash</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> Rs.120 <span> Rs.130 </span> </div>
-            <div class="quantity">
-                <span>quantity : </span>
-                <input type="number" min="1" max="1000" value=" ">
-                <span> /kg </span>
-            </div>
-            <a (click)="opendialog()"  class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="https://www.bigbasket.com/media/uploads/p/l/30002287_6-tata-sampann-unpolished-moong-dal.jpg" alt="">
-            <h3>Mung Dal</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> Rs.40 <span> Rs.50 </span> </div>
-            <div class="quantity">
-                <span>quantity : </span>
-                <input type="number" min="1" max="1000" value=" ">
-                <span> /kg </span>
-            </div>
-            <a (click)="opendialog()"  class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="https://www.bigbasket.com/media/uploads/p/l/40072494_12-bb-royal-organic-turtoor-dal.jpg" alt="" >
-            <h3>Tur Dal</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> Rs.60 <span> Rs.80 </span> </div>
-            <div class="quantity">
-                <span>quantity : </span>
-                <input type="number" min="1" max="1000" value=" ">
-                <span> /kg </span>
-            </div>
-            <a (click)="opendialog()"  class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="assets/Butter.jpeg" alt="">
-            <h3>natural butter</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> Rs.80 <span> Rs.100 </span> </div>
-            <div class="quantity">
-                <span>quantity : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a (click)="opendialog()" class="btn">add to cart</a>
-        </div>
-        
-
+        <a class="btn" href="product">Shop More</a>
     </div>
+
+    
+        <ng-container *ngFor="let item of productList" | slice : 0:3>
+            <div class="card col-md-3">
+                <div class="box">
+            <!-- <div class="box"> -->
+
+
+            <img src="{{item.image}}" alt="">
+            <h3>{{item.productName}}</h3>
+            <h3>{{item.description}}</h3>
+
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3 class="price">₹{{item.price}}</h3>
+            <div class="quantity">
+                <span>Quantity : </span>
+                <input type="number" min="1" max="10" value="{{item.quantity}}">
+                <span> /kg </span>
+            </div>
+            <button class="btn" (click)=opendialog(item)>Add to Cart</button>
+</div>
+</div>
+        </ng-container>
+   
 
 </section>
 
@@ -265,34 +93,37 @@
 <section class="features" id="features">
 
     <h1 class="heading"> our <span>features</span> </h1>
-    
+
     <div class="box-container">
-    
-      <div class="box">
-          <img src="assets/ScanGo.jpeg" alt="">
-          <h3>Scan&Go</h3>
-          <p>Scan & Go features, reducing queues at the checkout, and making customers happier with multiple smart functionalities.</p>
-          <a href="#" class="btn">read more</a>
-      </div>
-    
-      <div class="box">
-          <img src="assets/ClickGo.jpeg" alt="">
-          <h3>Click&Go</h3>
-          <p>virtual showcase for different types of groceries products where customers can go through a catalog and select products of their interest.</p>
-          <a href="#" class="btn">read more</a>
-      </div>
-    
-      <div class="box">
-          <img src="assets/EasyPay.jpeg" alt="">
-          <h3>Easy Payments</h3>
-          <p>A good combination would be to allow direct bank transfers and payments from all major credit cards with the secure technology with secure Payments.</p>
-          <a href="#" class="btn">read more</a>
-      </div>
-    
+
+        <div class="box">
+            <img src="assets/ScanGo.jpeg" alt="">
+            <h3>Scan&Go</h3>
+            <p>Scan & Go features, reducing queues at the checkout, and making customers happier with multiple smart
+                functionalities.</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="assets/ClickGo.jpeg" alt="">
+            <h3>Click&Go</h3>
+            <p>virtual showcase for different types of groceries products where customers can go through a catalog and
+                select products of their interest.</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="assets/EasyPay.jpeg" alt="">
+            <h3>Easy Payments</h3>
+            <p>A good combination would be to allow direct bank transfers and payments from all major credit cards with
+                the secure technology with secure Payments.</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
     </div>
-    
-    </section>
-    <section>
+
+</section>
+<section>
     <div class="container">
         <div class="wrapper">
             <div class="wrapper-holder">
@@ -313,7 +144,7 @@
                 </div>
                 <div id="slider-img-2">
                     <div class="context">
-                        <img src="assets/ScanGo.jpeg" >
+                        <img src="assets/ScanGo.jpeg">
                         <div class="details">
                             <h2>Scan&<span>GO</span></h2>
                             <br>
@@ -343,16 +174,16 @@
                 </div>
                 <div id="slider-img-4">
                     <div class="context">
-                        <img src="assets/EasyPay.jpeg" >
+                        <img src="assets/EasyPay.jpeg">
                         <div class="details">
                             <h2>Easy<span>Pay</span></h2>
                             <br>
                             <p>We have provided two payment modes to the Customers
-                                online &offline. In online mode, the customers can pay the bill by 
-                                using the UPI appsand in offline mode, the customer can pay the 
-                                bill by using the Pay in Shop option. Where the customer can 
-                                directly pay the bill to the shopkeeper if there is any problem in the 
-                                online mode.                            
+                                online &offline. In online mode, the customers can pay the bill by
+                                using the UPI appsand in offline mode, the customer can pay the
+                                bill by using the Pay in Shop option. Where the customer can
+                                directly pay the bill to the shopkeeper if there is any problem in the
+                                online mode.
                             </p>
                         </div>
                     </div>
@@ -366,9 +197,9 @@
             <a href="#slider-img-4" class="button"></a>
         </div>
     </div>
-    </section>
-    
-    <!-- features section ends -->
+</section>
+
+<!-- features section ends -->
 
 <!-- contact section starts  -->
 
@@ -411,13 +242,15 @@
 
 </section>
 
- <section class="footer">
-      
+<section class="footer">
+
     <div class="box-container">
 
         <div class="box">
             <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>groco</a>
-            <p>website for the grocery store, which allows shoppers to pick up an item they wish to buy, scan the barcode of the item with their phone and pay for it on the website, they simply leave with the item they just bought. No queuing; just Scan, Pay and Leave.</p>
+            <p>website for the grocery store, which allows shoppers to pick up an item they wish to buy, scan the
+                barcode of the item with their phone and pay for it on the website, they simply leave with the item they
+                just bought. No queuing; just Scan, Pay and Leave.</p>
             <div class="share">
                 <a href="#" class="btn fab fa-facebook-f"></a>
                 <a href="#" class="btn fab fa-twitter"></a>
@@ -425,7 +258,7 @@
                 <a href="#" class="btn fab fa-linkedin"></a>
             </div>
         </div>
-        
+
         <div class="box">
             <h3>our location</h3>
             <div class="links">
@@ -458,16 +291,10 @@
         </div>
 
         <h1 class="credit"> created by <span> mr. web designer </span> | all rights reserved! </h1>
-        
+
     </div>
-    
+
 </section>
 <!-- <div class="container">
 <h4><script>document.write(localStorage.getItem('fullname'))</script></h4>
 </div> -->
-
- 
-
-
-
-  
