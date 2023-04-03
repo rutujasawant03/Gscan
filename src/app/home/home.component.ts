@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
     this.api.getProduct()
     .subscribe(res=>{
       this.productList = res;
+      
     })
 
     

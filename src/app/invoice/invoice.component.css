@@ -80,11 +80,11 @@ body {
     padding: 12px 72px;
     border-radius: 3px !important;
 }
-/* #content {
+#content {
     width: 595px;
-    height: 842px;
-} */
-#table{
+    height: 100px;
+}
+/* #table{
     max-width: 2480px;
     width: 100%;
 }
@@ -92,7 +92,7 @@ body {
     width: auto;
      overflow: auto;
     word-wrap: break-word;
-}
+} */
 @media only screen and(max-width:600px){
    card{
     margin: 54px;

@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit {
   // public product :any ;
   public filterCategory : any
   cart1:any
+  
   item: any;
   cartID:any;
   cartProduct:any;
@@ -31,6 +32,8 @@ export class ProductComponent implements OnInit {
   @Input()
   addedToWishlist!: boolean;
   productId: any;
+  quantityR:number =0;
+  Pid:any;
   wishlist: number[] = []
   // cart: {} | undefined;
   constructor(private api : ApiService,private dialog : MatDialog, private cartService : CartService,private auth : AuthService,private wishlistService: WishlistService) { }
@@ -47,6 +50,9 @@ export class ProductComponent implements OnInit {
        
       });
       this.productList.forEach((a:any) =>{
+        if(this.Pid===this.productList.id){
+          this.quantityR=a.quantity;
+        }
         Object.assign(a,{quantity:1,total:a.price});
        
       });
@@ -101,19 +107,20 @@ export class ProductComponent implements OnInit {
           quantity : item.quantity,
           total: item.total,
           discount:10,
+          status:'pending',
         }
 
         this.cart1 = this.cartProduct
 
-    var Pid = item.id;
-    console.log(Pid,'pid var')
-    console.log(Pid,'pid var')
+    this.Pid = item.id;
+    console.log(this.Pid,'pid var')
+    
     let index:number = -1;
     this.itemsCart = JSON.parse(localStorage.getItem('localCart') || '[]');
     console.log(this.itemsCart,'cartdeta')
 
     for(let i=0; i<this.itemsCart.length; i++){
-      if(Pid === this.itemsCart[i].productid){
+      if(this.Pid === this.itemsCart[i].productid){
         this.itemsCart[i].quantity = item.quantity;
         index = i;
         break;

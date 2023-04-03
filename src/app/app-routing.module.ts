@@ -8,6 +8,7 @@ import { ProductComponent } from './product/product.component';
 
 import { ScanComponent } from './scan/scan.component';
 import { SignupComponent } from './signup/signup.component';
+import { SummaryComponent } from './summary/summary.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'product',component : ProductComponent},
   {path:'add-to-cart',component : AddToCartComponent},
   {path:'invoice',component : InvoiceComponent},
-  {path:'scan',component : ScanComponent}
+  {path:'scan',component : ScanComponent},
+  {path:'summary',component : SummaryComponent}
   // {path:'login',component:LoginComponent},
   // {path:'signup',component:SignupComponent}
 ];

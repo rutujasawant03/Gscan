@@ -37,13 +37,19 @@ export class ApiService {
     }))
   }
   postOrder(cartData:any){
-    return this.http.post<any>("http://localhost:3000/order?userID=",cartData);
+    return this.http.post<any>("http://localhost:3000/order/",cartData);
   }
   // getOrder(id:number){
   //   return this.http.get<any>("http://localhost:3000/order/"+id);
   // }
   getCartList(userId:number){
     return this.http.get<any>("http://localhost:3000/cart?userID="+userId)
+    .pipe(map((res:any)=>{
+      return res;
+    }));
+  }
+  getCartList1(id:number){
+    return this.http.get<any>("http://localhost:3000/cart?id="+id)
     .pipe(map((res:any)=>{
       return res;
     }));

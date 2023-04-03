@@ -30,6 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ScanComponent } from './scan/scan.component';
+import { SummaryComponent } from './summary/summary.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ScanComponent } from './scan/scan.component';
     InvoiceComponent,
  
     ScanComponent,
+      SummaryComponent,
     
     
   ],

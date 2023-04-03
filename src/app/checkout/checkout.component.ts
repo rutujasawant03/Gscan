@@ -21,6 +21,10 @@ export class CheckoutComponent implements OnInit {
   order :any =[];
   cartProduct:any;
   item: any;
+  invoiceid:any=0;
+  length:any;
+  AllOrder:any;
+  
   invoiceData:Cart = new Cart();
   constructor(private cartService : CartService,private http : HttpClient,private payauth:PaymentauthService,
     private dialog: MatDialog,private api:ApiService) { }
@@ -34,45 +38,20 @@ export class CheckoutComponent implements OnInit {
     if(localStorage.getItem('localCart')){
       this.product = JSON.parse(localStorage.getItem('localCart') || "{}");
       console.log(this.product.length,'tttttt')
-      console.log(this.product[1]['productid'],'yyyyy');
+      for(let i=0; i<this.product.length; i++){
+        console.log(this.product[i]['productid'],'yyyyy');
+       
+        
+      }
+      
       
    console.log(this.total,'d')
       
     }
   }
-  opendialog(item:any){
-    this.dialog.open(InvoiceComponent, {
-      width: '50%'
-      
-    })
-    
-    let user = localStorage.getItem('user');
-    let order = localStorage.getItem('localCart')
-      let userId = user && JSON.parse(user).id
-      
-     
-    
-     
-     
-      this.api.postOrder(this.product).subscribe((result: any)=>{
-        if(result){
-          alert('product added')
+ 
 
-        }
-        this.product = JSON.parse(localStorage.getItem('localCart') || '{}');
-
-      })
-      this.delete()
-  }
-
-  delete(){
-    this.cartdelete = JSON.parse(localStorage.getItem('localCart') || '{}');
-    for (let i =0; i< this.cartdelete.length;i++){
-      this.api.deleteCart(this.cartdelete[i].id).subscribe((res)=>{
-  
-      })
-    }
-   }
+ 
   
  
   loadCart(){
@@ -101,8 +80,16 @@ export class CheckoutComponent implements OnInit {
     "name": "GScan", //your business name
     "description": "Test Transaction",
     "image": "assets/logog.png",
-    "order_id": "", 
-    // "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+    "handler": function (response:any){
+      let a=response.razorpay_payment_id;
+       
+        window.location.href='http://localhost:4200/summary'
+    },
+     
+    // callback_url: 'invoice',
+    // redirect: true,
+    
+    // "callback_url": "localhost:4200/home/",
     // "routerLink":"invoice",
     "prefill": {
         "name": "Gaurav Kumar", //your customer's name
@@ -115,11 +102,14 @@ export class CheckoutComponent implements OnInit {
     "theme": {
         "color": "#1cda3b"
     }
+    
 };
 rzp1:any;
 pay(){
-  this.options.amount = (this.total *100) - (this.discValue*100)
+  this.options.amount = (this.total *100) - (this.discValue*100);
+  // this.options.callback_url ="src\app\invoice";
   this.rzp1 = new this.payauth.nativeWindow.Razorpay(this.options);
+  
   this. rzp1.open();
 }
 }
