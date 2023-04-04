@@ -89,7 +89,7 @@ export class SignupComponent implements OnInit {
             return a.email ===this.signupForm.value.email
           });
           if(email){
-            alert("duplicate email");
+            alert("User already exist!!");
           }else{
             this.http.post<any>("http://localhost:3000/signupUsers",this.signupForm.value)
     .subscribe(res=>{

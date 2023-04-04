@@ -1,6 +1,6 @@
 <div class="card">
   <div class="text-center">
-    <h1>Security Question</h1>
+    <h1>Forgot Password</h1>
 
   </div>
   <form [formGroup]="signupForm" (ngSubmit)="signUp()">
@@ -16,9 +16,9 @@
           required!!</span>
 
         <div *ngIf="submitted && signupForm.controls.email.errors.pattern">
-          Email Address is not Valid
+          Username is not Valid
         </div>
-        <div *ngIf="signupForm.controls.email.hasError('duplicateEmail')">Email is duplicate</div>
+        
       </div>
     </div>
     <div class="mb-3">
@@ -34,7 +34,7 @@
           required!!</span>
 
         <div *ngIf="submitted && signupForm.controls.security.errors.minlength">
-          Answer Should be atleast 4 characters
+         Answer should be atleast 10 characters
         </div>
       </div>
     </div>
@@ -50,9 +50,8 @@
         <span class="text-danger" *ngIf=" submitted && signupForm.controls.password.errors.required ">Field is
           required!!</span>
 
-        <div *ngIf="submitted && signupForm.controls.password.errors.pattern">
-          Password must contain at least one number, one uppercase and a lowercase letter
-          and at least 8 characters<br>Password cannot contain whitespace
+        <div *ngIf="submitted && signupForm.controls.password.errors.minlength">
+         Password must contain atleast 8 characters
         </div>
       </div>
     </div>
