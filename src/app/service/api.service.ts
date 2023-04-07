@@ -31,7 +31,7 @@ export class ApiService {
     return this.http.get<any>("http://localhost:3000/signupUsers/");
   }
   getProductId(id:number){
-    return this.http.get<any>("http://localhost:3000/productList/"+id)
+    return this.http.get<any>("http://localhost:3000/productList?id="+id)
     .pipe(map((res:any)=>{
       return res;
     }))
@@ -68,5 +68,11 @@ export class ApiService {
  }
  putProduct(data:any,id: number){
   return this.http.put<any>("http://localhost:3000/productList/"+id , data);
+}
+getOrders(){
+  return this.http.get<any>("http://localhost:3000/order/");
+}
+putProductqty(id: any,data:any){
+  return this.http.put<any>("http://localhost:3000/productList/"+id ,data);
 }
 }

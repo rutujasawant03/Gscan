@@ -69,7 +69,7 @@ import { SummaryComponent } from './summary/summary.component';
     MatTabsModule,
     NgxScannerQrcodeModule,
     RouterModule,
-    MatMenuModule
+    MatMenuModule, 
     
   
   ],

@@ -73,6 +73,9 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: .25rem;
 }
+.table{
+    width: 10px;
+}
 .center .btn{
     font-size: 14px !important;
     margin-top: 20px !important;
@@ -93,6 +96,12 @@ body {
      overflow: auto;
     word-wrap: break-word;
 } */
+.logo img{
+    padding-right: .5rem;
+    width: 50%;
+  
+   
+  }
 @media only screen and(max-width:600px){
    card{
     margin: 54px;

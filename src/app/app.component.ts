@@ -44,52 +44,52 @@ export class AppComponent {
       this.cartItemFunc();
       
   }
-  cartItem:number = 0;
-  cartItemFunc(){
-    let user = localStorage.getItem('user');
-     
-      let userId = user && JSON.parse(user).id
-      this.loginU = user && JSON.parse(user).fullname
-   {
-    this.api.getCartList(userId).subscribe((cartCount)=>{ 
-      this.cartItem = cartCount.length
-      console.log(this.cartItem,"sds")
-    })
-  } 
+    cartItem:number = 0;
+    cartItemFunc(){
+      let user = localStorage.getItem('user');
+      
+        let userId = user && JSON.parse(user).id
+        this.loginU = user && JSON.parse(user).fullname
+    {
+      this.api.getCartList(userId).subscribe((cartCount)=>{ 
+        this.cartItem = cartCount.length
+        console.log(this.cartItem,"sds")
+      })
+    } 
 
-  }
-    loggedin(){
-      return localStorage.getItem('user');
     }
- 
+      loggedin(){
+        return localStorage.getItem('user');
+      }
   
-  opendialog() {
-    this.dialog.open(LoginComponent, {
-      width: '50%'
-
-    })
-  }
-
-  logout() {
-    let fullname = localStorage.getItem('user') ? localStorage.getItem('user') : ''
-    console.log(fullname);
-    if (fullname == '') {
-      alert('U need to login');
+    
+    opendialog() {
       this.dialog.open(LoginComponent, {
         width: '50%'
+
       })
     }
-    
-    localStorage.removeItem('user');
-    localStorage.removeItem('localCart');
-    
-    location.reload();
-    
-  }
-  search(event: any) {
-    this.searchTerm = (event.target as HTMLInputElement).value;
-    console.log(this.searchTerm);
-    this.cartService.search.next(this.searchTerm);
-  }
+
+    logout() {
+      let fullname = localStorage.getItem('user') ? localStorage.getItem('user') : ''
+      console.log(fullname);
+      if (fullname == '') {
+        alert('U need to login');
+        this.dialog.open(LoginComponent, {
+          width: '50%'
+        })
+      }
+      
+      localStorage.removeItem('user');
+      localStorage.removeItem('localCart');
+      
+      location.reload();
+      
+    }
+    search(event: any) {
+      this.searchTerm = (event.target as HTMLInputElement).value;
+      console.log(this.searchTerm);
+      this.cartService.search.next(this.searchTerm);
+    }
 
 }

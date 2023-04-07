@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoiceComponent } from '../invoice/invoice.component';
 import { ApiService } from '../service/api.service';
@@ -20,9 +21,24 @@ export class SummaryComponent implements OnInit {
   length:any;
   AllOrder:any;
   id1:any;
-  constructor(private api:ApiService,private dialog: MatDialog) { }
+  PID: any;
+  a: any;
+  b: any;
+  c: any;
+  data: any;
+  pid: any;
+  pcat: any;
+  pname: any;
+  pdis: any;
+  ppris: any;
+  pimg: any;
+  qut: any;
+  id:any;
+  productForm !: FormGroup;
+  constructor(private api:ApiService,private dialog: MatDialog,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+  
   }
   opendialog(item:any){
     
@@ -33,18 +49,18 @@ export class SummaryComponent implements OnInit {
    
     if(localStorage.getItem('localCart')){
       this.product = JSON.parse(localStorage.getItem('localCart') || "{}");
+      console.log(this.product,'HGHGHGHGHG')
       for(let i=0;i<this.product.length;i++){
         this.id1=this.product[i].id;
+       
+        let a=this.product[i].SQty;
+        console.log(a,"nnnnnnnnn")
         console.log(this.id1,'OOOOOOOOOP')
-        this.api.getProductId
-      
-        
         let user = localStorage.getItem('user');
-    
         let userId = user && JSON.parse(user).id
         
         this.cartProduct = {
-          userID :userId,
+          userID:userId,
           productid : this.product[i].productid,
           category: this.product[i].category,
           description :this.product[i].description,
@@ -56,38 +72,56 @@ export class SummaryComponent implements OnInit {
           discount:10,
          
         }
-      let order=this.cartProduct
-      console.log(order,'qwertyuio')
-     
+      let order=this.cartProduct;
+      console.log(order,'qwertyuio')   
       this.api.postOrder(order).subscribe((result: any)=>{
         if(result){
-          
-          
+          console.log(result,"zzzzzz")
+          this.api.getProductId(result.productid).subscribe((res1)=>{
+            let t=res1[0].quantity;
+            this.updateQty(result.productid,result.quantity,a,t,result.category,result.productName,result.description,result.image,result.price);
+           
 
+          })
+          
         }
         else{
           alert("order not placed")
         }
-        this.product = JSON.parse(localStorage.getItem('localCart') || '{}');
+    
 
-      })
-      
-      this.delete()
-        
-      
-      
-      alert('order placed')
-      
-      
-   console.log(this.total,'d')
-      
-    }
+      });   
+     }
     
       }
-      
-    
     
       
+  }
+ updateQty(id:any,cartqut:any,requt:any,aqut:any,catagory:any,productName:any,description:any,image:any,price:any) {
+
+  console.log(id,"kkkkkkkk")
+  console.log(requt,"ttttttt")
+  console.log(cartqut,"ppppppp")
+  console.log(aqut,"rrrrrrr")
+  
+  this.productForm = this.formBuilder.group({
+            id: id,
+            category: catagory,
+            productName: productName,
+            description: description,
+            quantity: aqut,
+            price: price,
+            image: image,
+            discount: 10,
+            SQty: aqut-cartqut,
+            RemQty: '',
+          });
+          console.log(this.productForm,'jjjjjjj')
+          this.api.putProductqty(id, this.productForm.value).subscribe((res1) => {
+                    console.log(res1,'VVVVVVVVVV')
+                  },)
+  
+
   }
 
   delete(){

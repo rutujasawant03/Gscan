@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Cart } from '../cart.model';
@@ -16,232 +16,216 @@ import { CartService } from '../service/cart.service';
 })
 export class AddToCartComponent implements OnInit {
   itemForm !: FormGroup;
-  product :any | Cart;
+  product: any | Cart;
   public grandTotal !: number;
-   productList : any | Cart;
+  productList: any | Cart;
   data: any;
+  updqty:any;
   item: any;
-  Pid:any;
-  qutid: number=0;
-  ty:any;
-  id :any;
-  abc:any;
-  getpid:any;
-  quid:any;
-  constructor(private cartService : CartService,private http :HttpClient,private formBuilder:FormBuilder,
-    private api : ApiService,private auth : AuthService,private dialog: MatDialog, private actRoute: ActivatedRoute){}
+  Pid: any;
+  qutid: number = 0;
+  ty: any;
+  id: any;
+  abc: any;
+  getpid: any;
+  quid: any;
+  id3:any;
+  cartProduct: any;
+  constructor(private cartService: CartService, private http: HttpClient, private formBuilder: FormBuilder,
+    private api: ApiService, private auth: AuthService, private dialog: MatDialog, private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
-    this.actRoute.queryParams.subscribe(queryParam =>{
-      console.log(queryParam,'hiii')
+    this.actRoute.queryParams.subscribe(queryParam => {
       this.id = queryParam.id;
-      console.log(this.id,'hello')
+      console.log(this.id,'pppppppp')
     })
-   
-  this.cartService.getProduct()
-    .subscribe(res=>{
-      this.product = res;
-     
-      
-    })
+
+    this.cartService.getProduct()
+      .subscribe(res => {
+        this.product = res;
+      })
     let user = localStorage.getItem('user');
-     
-      let userId = user && JSON.parse(user).id
-      
-    this.api.getCartList(userId).subscribe((res)=>{
-      
+    let userId = user && JSON.parse(user).id
+    this.api.getCartList(userId).subscribe((res) => {
       this.ty = res
-      if(res){
-        localStorage.setItem('localCart',JSON.stringify(res))
+      if (res) {
+        console.log(res,'IIIIUUUUU')
+        // location.reload()
+        localStorage.setItem('localCart', JSON.stringify(res))
       }
-     
     })
-    
-    // this.CartDetails();
     this.loadCart();
-    this.getID();
-    
+    // this.getID();
   }
-  
-  itemsCart:any = [];
-  getID(){
-    
-    this.api.getProductId(this.id).subscribe(res=>{
-      let data = res;
-      console.log(data,'hhjj');
-      console.log(res,'ii')
-    
-    this.cartService.postCart(data).subscribe((result: any)=>{
-        if(result){location.reload()
-        }
-      })
+  itemsCart: any = [];
+  // getID() {
+  //   this.api.getProductId(this.id).subscribe(res => {
       
-      let cartDataNull = localStorage.getItem('localCart');
-    if(cartDataNull == null){
-      let storeDataGet : any = [];
-      storeDataGet.push(data);
-      localStorage.setItem('localCart',JSON.stringify(storeDataGet));
-      location.reload()
-    }
-    else{
-      
-      this.Pid = data.id;
-      let index:number = -1;
-      this.itemsCart = JSON.parse(localStorage.getItem('localCart') || '[]');
+  //     // for(let i=0;i<res.length;i++){
+        
+  //     //   if(this.ty.id === res.id){
+  //       // location.reload()
+  //       let data=res
+        
+  //       localStorage.setItem('localCart', JSON.stringify(data));
+  //     console.log(data, 'hhjj');
      
-      for(let i=0; i<this.itemsCart.length; i++){
-        if(parseInt(this.Pid) === parseInt(this.itemsCart[i].id)){
-          this.itemsCart[i].quantity = data.quantity;
-          index = i;
-          
-          break;
-          
-        }
-      
-      }
-      
-      if(index == -1){
-        this.itemsCart.push(data);
-        localStorage.setItem('localCart',JSON.stringify(this.itemsCart));
-        
-      }
-      else{
-        localStorage.setItem('localCart',JSON.stringify(this.itemsCart));
-        
-      }
-    }
-    
-    })
-  }
-  // CartDetails(){
-  //   if(localStorage.getItem('localCart')){
-  //     this.ty = JSON.parse(localStorage.getItem('localCart') || '[]');
-  //     console.log(this.ty);
-  //   }
+   
+  //     // let cartDataNull = localStorage.getItem('localCart');
+  //     // if (cartDataNull == null) {
+  //     //   let storeDataGet: any = [];
+  //     //   storeDataGet.push(data);
+  //     //   localStorage.setItem('localCart', JSON.stringify(storeDataGet));
+  //     //   location.reload()
+  //     // }
+  //     // else {
+  //       // this.Pid = data.id;
+  //       let index: number = -1;
+  //       this.itemsCart = JSON.parse(localStorage.getItem('localCart') || '[]');
+  //       for (let i = 0; i < this.itemsCart.length; i++) {
+  //         if (parseInt(this.Pid) === parseInt(this.itemsCart[i].id)) {
+  //           this.itemsCart[i].quantity = data.quantity;
+  //           index = i;
+  //           break;
+  //         }
+  //       }
+  //       if (index == -1) {
+  //         this.itemsCart.push(data);
+  //         localStorage.setItem('localCart', JSON.stringify(this.itemsCart));
+  //       }
+  //       else {
+  //         localStorage.setItem('localCart', JSON.stringify(this.itemsCart));
+  //       }
+  //       // if (index == -1) {
+  //       //   this.cartService.postCart(data[0]).subscribe((result: any) => {
+  //       //     if (result) {
+  //       //     }
+  //       //   })
+  //       // }
+  //     // }
+  //   // }
+  //   // }
+  //   })
   // }
-
-
-  incQty(id: any,quantity: any){
+  incQty(id: any, quantity: any,proid:any) {
    
-   
-   
-    for(let i=0; i<this.ty.length; i++){
-  
-     if(this.ty[i].id === id){
-      this.api.getCartList1(id).subscribe((result)=>{
-        this.abc=result;
-        this.quid=this.abc[0].productid;
-        console.log(this.quid,'hcgvfhgdfdzfb')
-        this.api.getProductId(this.quid).subscribe((res)=>{
-          console.log(res,'kjhgfdghfgxd')
-          this.qutid=res.SQty;
-          this.getpid=res.id
-          console.log(this.getpid,'hcgvb')
-        })
-      })
-       if(quantity <= this.qutid-1){
-       this.ty[i].quantity = parseInt(quantity) + 1;
-       }
-       else if(quantity==this.qutid){
+  console.log(proid,'DXFCGVJHBJN')
+  this.api.getProductId(proid).subscribe((res)=>{
+    let actqut=res[0].SQty;
+    console.log(res,"jhgfdfgh")
+    if (quantity < actqut) {
+      for(let a=0;a<=this.ty.length;a++){
+        if(this.ty[a].id===id){      
+          this.ty[a].quantity = parseInt(quantity) + 1;
+        }
+        
+        }
+      }else if (quantity == actqut) {
         alert("Product out of stock");
       }
-      }
-      
-    }
-   
+           
+  })
+    
+    
     localStorage.setItem('localCart', JSON.stringify(this.ty));
     this.loadCart();
-   
- }
+  }
 
- decQty(id: any,quantity: any){
-   for(let i=0; i<this.ty.length; i++){
-    if(this.ty[i].id === id){
-     if(quantity !=1)
-      this.ty[i].quantity = parseInt(quantity) - 1;
+  decQty(id: any, quantity: any) {
+    for (let i = 0; i < this.ty.length; i++) {
+      if (this.ty[i].id === id) {
+        if (quantity != 1)
+          this.ty[i].quantity = parseInt(quantity) - 1;
+      }
     }
-   }
-   localStorage.setItem('localCart', JSON.stringify(this.ty));
-   this.loadCart();
-   
-} 
-Opendialog(){
+    localStorage.setItem('localCart', JSON.stringify(this.ty));
+    this.loadCart();
+  }
+  Opendialog() {
+    console.log(this.qutid, "khjgdfsfadfghjkgvgwr")
+    // if (this.qutid > 0) {
+      this.dialog.open(CheckoutComponent, {
+        width: '50%',
+      });
+      // this.api.getProduct().subscribe((res1)=>{
+      //   for(let i=0;i<res1.length;i++){
+      //     let qtiqty=res1[i].quantity
+      //     console.log(qtiqty,'tyyttyyytt')
        
-  console.log(this.qutid,"khjgdfsfadfghjkgvgwr")
-  if(this.qutid>0){
-    this.dialog.open(CheckoutComponent, {
-      width:'50%',
-    
-    });
+      // if(localStorage.getItem('localCart')){
+      //   this.updqty=JSON.parse(localStorage.getItem('localCart') || '{}')
+      //   for(let i = 0; i<this.updqty.length; i++){
+      //     this.id3 = this.updqty[i].id
+      //     this.cartProduct = {
+      //       id: this.updqty[i].productid,
+      //       category: this.updqty[i].category,
+      //       productName: this.updqty[i].productName,
+      //       description: this.updqty[i].description,
+      //       quantity: this.updqty[i].quantity,
+      //       price: this.updqty[i].price,
+      //       SQty: this.updqty[i].SQty+this.updqty[i].quantity,
+      //       RemQty: qtiqty-this.updqty[i].SQty,
+      //       image:this.updqty[i].image,
+      //       discount: 10
+      //     }
+      //     console.log( qtiqty-this.updqty[i].SQty,'llllllllllllll')
+      //     console.log(this.cartProduct,'fddfdf');
+      //     console.log(this.updqty[i].SQty+this.updqty[i].quantity,'ddddd')
+      //     this.api.putProduct(this.cartProduct,this.updqty[i].productid).subscribe((res)=>{
+      //         console.log(res,'res')
+      //       })
+      //   }
+      // }
+    // }
+    // else {
+    //   alert("Product out of stock")
+    // }
+//   }
+// }
+// )
   }
-  else{
-    alert("Product out of stock")
-  }
-  
-
-
-}
-    
- 
-
-  removeItem(item:any){
-    console.log(item,'dss');
-    if(localStorage.getItem('localCart')){ 
+  removeItem(item: any) {
+    console.log(item, 'dss');
+    if (localStorage.getItem('localCart')) {
       this.ty = JSON.parse(localStorage.getItem('localCart') || '[]');
-      this.api.deleteCart(item).subscribe((res)=>{
-        for(let i=0; i<this.ty.length; i++){
-            if(this.ty[i].id === item){
-              this.ty.splice(i, 1);
-              localStorage.setItem('localCart', JSON.stringify(this.ty));
-             
-            }
-           
+      this.api.deleteCart(item).subscribe((res) => {
+        for (let i = 0; i < this.ty.length; i++) {
+          if (this.ty[i].id === item) {
+            this.ty.splice(i, 1);
+            localStorage.setItem('localCart', JSON.stringify(this.ty));
           }
-          
+        }
       })
       this.loadCart();
-          this.cartNumberFunc()
+      this.cartNumberFunc()
     }
-    
   }
-  emptyCart(){
+  emptyCart() {
     localStorage.removeItem('localCart');
     location.reload();
     this.cartNumberFunc();
-    
+
   }
-  // cart icon update
-  // cartNumber:number = 0;
-  // cartNumberFunc(){
-  //   var cartValue = JSON.parse(localStorage.getItem('localCart')|| '[]');
-  //   this.cartNumber = cartValue.length;
-    
-  //   this.auth.cartSubject.next(this.cartNumber)
-  
-  // }
-  cartNumber:number = 0;
-  cartNumberFunc(){
-     let user = localStorage.getItem('user');
+
+  cartNumber: number = 0;
+  cartNumberFunc() {
+    let user = localStorage.getItem('user');
     let userId = user && JSON.parse(user).id
-      
-    this.api.getCartList(userId).subscribe((cartValue)=>{
-    this.cartNumber = cartValue.length;
-    console.log(this.cartNumber,'rutu');
-    this.auth.cartSubject.next(this.cartNumber)
+
+    this.api.getCartList(userId).subscribe((cartValue) => {
+      this.cartNumber = cartValue.length;
+      console.log(this.cartNumber, 'rutu');
+      this.auth.cartSubject.next(this.cartNumber)
     })
   }
   // grandTotal
-  total:number = 0
-  loadCart(){
-    if(localStorage.getItem('localCart')){
+  total: number = 0
+  loadCart() {
+    if (localStorage.getItem('localCart')) {
       this.ty = JSON.parse(localStorage.getItem('localCart') || '[]')
-      this.total = this.ty.reduce(function(acc: any,val: any){
+      this.total = this.ty.reduce(function (acc: any, val: any) {
         return acc + (val.price * val.quantity);
       }, 0)
     }
   }
-
- 
-  
 }
